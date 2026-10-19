@@ -1,0 +1,128 @@
+.golden-dust {
+  --dust-core: 255, 227, 160;
+  --dust-tone-a: 231, 184, 93;
+  --dust-tone-b: 219, 171, 94;
+  --dust-tone-c: 246, 215, 155;
+  position: absolute;
+  inset: 4% 0 10%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.gallery-accent-stone .golden-dust {
+  --dust-core: 224, 224, 224;
+  --dust-tone-a: 186, 186, 186;
+  --dust-tone-b: 152, 152, 152;
+  --dust-tone-c: 207, 207, 207;
+}
+
+.gallery-accent-chromatic .golden-dust {
+  --dust-core: 197, 196, 207;
+  --dust-tone-a: 108, 151, 165;
+  --dust-tone-b: 145, 127, 158;
+  --dust-tone-c: 169, 140, 149;
+}
+
+.gallery-accent-chromatic .golden-dust::before {
+  opacity: .32;
+}
+
+.gallery-accent-chromatic .golden-dust::after {
+  opacity: .17;
+}
+
+/* Fine dust is painted in two small repeating textures, not hundreds of nodes. */
+.golden-dust::before,
+.golden-dust::after {
+  content: "";
+  position: absolute;
+  inset: -88px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 23px 42px, rgba(var(--dust-tone-c), .75) 2px, transparent 3.8px),
+    radial-gradient(circle at 96px 138px, rgba(var(--dust-tone-b), .65) 2.3px, transparent 4.3px),
+    radial-gradient(circle at 181px 74px, rgba(var(--dust-tone-a), .55) 1.6px, transparent 3.5px),
+    radial-gradient(circle at 143px 203px, rgba(var(--dust-tone-b), .55) 2px, transparent 3.8px),
+    radial-gradient(circle at 231px 171px, rgba(var(--dust-tone-c), .65) 1.6px, transparent 3.5px),
+    radial-gradient(circle at 58px 219px, rgba(var(--dust-tone-a), .5) 2.3px, transparent 4.2px);
+  background-size: 263px 241px;
+  opacity: .48;
+  animation: golden-dust-field 14s linear -6s infinite alternate;
+}
+
+.golden-dust::after {
+  background-size: 307px 283px;
+  background-position: 71px 113px;
+  opacity: .28;
+  animation-duration: 19s;
+  animation-delay: -13s;
+  animation-direction: alternate-reverse;
+}
+
+.golden-dust__particle {
+  --particle-color: var(--dust-tone-a);
+  position: absolute;
+  width: var(--dust-size);
+  height: var(--dust-size);
+  border-radius: 50%;
+  /* A tiny prepainted gradient replaces animated blur and shadow filters. */
+  background: radial-gradient(circle,
+    rgb(var(--dust-core)) 0 14%,
+    rgba(var(--particle-color), .9) 20%,
+    rgba(var(--particle-color), .3) 38%,
+    transparent 72%);
+  opacity: 0;
+  animation: golden-dust-rise var(--dust-duration) linear var(--dust-delay) infinite;
+}
+
+.golden-dust__particle:nth-child(3n + 2) {
+  --particle-color: var(--dust-tone-b);
+}
+
+.golden-dust__particle:nth-child(3n) {
+  --particle-color: var(--dust-tone-c);
+}
+
+.golden-dust[data-paused="true"] .golden-dust__particle,
+.golden-dust[data-paused="true"]::before,
+.golden-dust[data-paused="true"]::after {
+  animation-play-state: paused;
+}
+
+@keyframes golden-dust-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 35px, 0);
+  }
+  18%, 45% { opacity: var(--dust-brightness); }
+  72% { opacity: calc(var(--dust-brightness) * .55); }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dust-drift), -205px, 0);
+  }
+}
+
+@keyframes golden-dust-field {
+  from { transform: translate3d(-24px, 64px, 0); }
+  to { transform: translate3d(30px, -72px, 0); }
+}
+
+@media (max-width: 767px) {
+  .golden-dust__particle:nth-child(n + 17) { display: none; }
+  .golden-dust::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .golden-dust::before,
+  .golden-dust::after {
+    animation: none;
+    transform: none;
+  }
+  .golden-dust__particle {
+    animation: none;
+    opacity: .35;
+    transform: none;
+  }
+}

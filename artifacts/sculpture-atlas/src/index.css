@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: 42 21% 93%;
+  --foreground: 35 18% 17%;
+  --border: 38 13% 78%;
+  --input: 38 13% 78%;
+  --ring: 42 36% 49%;
+  --card: 42 19% 89%;
+  --card-foreground: 35 18% 17%;
+  --primary: 43 43% 45%;
+  --primary-foreground: 42 24% 95%;
+  --secondary: 165 14% 84%;
+  --secondary-foreground: 170 21% 23%;
+  --muted: 39 15% 85%;
+  --muted-foreground: 34 10% 43%;
+  --accent: 159 27% 67%;
+  --accent-foreground: 165 24% 19%;
+  --app-font-sans: 'Manrope', sans-serif;
+  --app-font-serif: 'Playfair Display', serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --radius: 0.7rem;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; background: hsl(var(--background)); }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: hsl(var(--foreground));
+  font-family: var(--app-font-sans);
+  background:
+    radial-gradient(ellipse at 58% 25%, rgba(255,255,255,.48), transparent 36rem),
+    hsl(var(--background));
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; }
+button:focus-visible { outline: 2px solid #8e7541; outline-offset: 3px; }
+::selection { background: #c5b27d; color: #25251e; }
+
+.app-shell { min-height: 100dvh; overflow: hidden; position: relative; }
+.app-shell::after {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: .13;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+}
+.eyebrow { font-family: var(--app-font-mono); text-transform: uppercase; letter-spacing: .14em; font-size: 10px; }
+.museum-title { font-family: var(--app-font-serif); font-weight: 500; letter-spacing: -.035em; }
+.viewer-grid {
+  background-image: linear-gradient(rgba(210,194,152,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(210,194,152,.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+.artwork-thumb { transition: transform .25s ease, border-color .25s ease, opacity .25s ease; }
+.artwork-thumb:hover { transform: translateY(-3px); }
+.viewer-enter { animation: reveal .65s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

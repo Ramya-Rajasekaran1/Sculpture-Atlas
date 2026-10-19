@@ -1,0 +1,331 @@
+/* Celestial Glass — an object suspended inside a refracting observatory. */
+.gallery-theme-celestial {
+  --cg-void: #080a18;
+  --cg-indigo: #151b3b;
+  --cg-blue: #90a8ff;
+  --cg-ice: #c9e8ff;
+  --cg-lilac: #c4a9ee;
+  --cg-amber: #d9bb79;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #e9e9f4;
+  background:
+    radial-gradient(ellipse at 48% 41%, rgba(48, 55, 105, .38) 0, rgba(23, 27, 59, .24) 28%, transparent 59%),
+    radial-gradient(ellipse at 83% 18%, rgba(76, 93, 152, .16), transparent 33%),
+    radial-gradient(ellipse at 11% 81%, rgba(90, 57, 119, .13), transparent 38%),
+    linear-gradient(145deg, #090b1b 0%, #11152d 49%, #090b1b 100%);
+}
+
+.gallery-theme-celestial::before,
+.gallery-theme-celestial::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Extremely fine starfield and distant spectral dust. */
+.gallery-theme-celestial::before {
+  opacity: .42;
+  background-image:
+    radial-gradient(1px 1px at 8% 16%, rgba(227, 236, 255, .8) 50%, transparent 100%),
+    radial-gradient(1px 1px at 22% 66%, rgba(184, 201, 255, .7) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 74% 13%, rgba(255, 255, 255, .8) 50%, transparent 100%),
+    radial-gradient(1px 1px at 92% 55%, rgba(208, 194, 255, .75) 50%, transparent 100%),
+    radial-gradient(1px 1px at 63% 83%, rgba(193, 223, 255, .7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 39% 28%, rgba(255, 255, 255, .5) 50%, transparent 100%);
+  background-size: 271px 233px, 317px 286px, 383px 319px, 347px 267px, 421px 333px, 293px 367px;
+  mask-image: linear-gradient(to bottom, #000, rgba(0,0,0,.8) 62%, transparent);
+}
+.gallery-theme-celestial::after {
+  opacity: .38;
+  background:
+    linear-gradient(115deg, transparent 30%, rgba(147, 170, 255, .045) 47%, transparent 52%),
+    linear-gradient(66deg, transparent 60%, rgba(211, 190, 255, .035) 74%, transparent 78%);
+  mix-blend-mode: screen;
+}
+
+.gallery-theme-celestial .gallery-atmosphere {
+  perspective: 1250px;
+  transform-style: preserve-3d;
+}
+.gallery-theme-celestial .gallery-atmosphere__glow {
+  filter: blur(54px);
+  mix-blend-mode: screen;
+}
+.gallery-theme-celestial .gallery-atmosphere__glow--one {
+  width: min(68vw, 900px);
+  height: min(68vw, 900px);
+  left: 18%;
+  top: -26%;
+  opacity: .65;
+  background: radial-gradient(circle, rgba(112, 130, 221, .25), rgba(91, 83, 167, .1) 43%, transparent 71%);
+  animation: cg-nebula 18s ease-in-out infinite alternate;
+}
+.gallery-theme-celestial .gallery-atmosphere__glow--two {
+  width: 52vw;
+  height: 52vw;
+  right: -20%;
+  bottom: -40%;
+  opacity: .54;
+  background: radial-gradient(circle, rgba(145, 103, 197, .22), rgba(76, 102, 173, .08) 48%, transparent 72%);
+  animation: cg-nebula 23s ease-in-out -8s infinite alternate-reverse;
+}
+
+.gallery-theme-celestial .gallery-atmosphere__orbit {
+  left: 50%;
+  top: 48%;
+  width: min(74vw, 1050px);
+  height: min(30vw, 430px);
+  border: 1px solid rgba(179, 198, 255, .18);
+  box-shadow: 0 0 28px rgba(113, 145, 255, .055), inset 0 0 25px rgba(161, 181, 255, .035);
+  transform: translate(-50%, -50%) rotateX(68deg) rotateZ(-17deg);
+}
+.gallery-theme-celestial .gallery-atmosphere__orbit--one {
+  border-color: rgba(172, 193, 255, .2);
+  animation: cg-orbit-drift 32s linear infinite;
+}
+.gallery-theme-celestial .gallery-atmosphere__orbit--two {
+  width: min(56vw, 780px);
+  height: min(47vw, 650px);
+  border-color: rgba(210, 176, 245, .13);
+  transform: translate(-50%, -50%) rotateX(73deg) rotateZ(57deg);
+  animation: cg-orbit-drift-reverse 42s linear infinite;
+}
+.gallery-theme-celestial .gallery-atmosphere__floor {
+  bottom: -37%;
+  width: 120%;
+  height: 74%;
+  opacity: .74;
+  border-top: 1px solid rgba(173, 193, 255, .28);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(117, 143, 229, .18), transparent 49%),
+    repeating-linear-gradient(90deg, transparent 0 74px, rgba(166, 186, 255, .075) 75px, transparent 76px),
+    repeating-linear-gradient(0deg, transparent 0 58px, rgba(166, 186, 255, .065) 59px, transparent 60px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 68%);
+  transform: translateX(-50%) perspective(650px) rotateX(70deg);
+  transform-origin: center top;
+}
+.gallery-theme-celestial .gallery-atmosphere__particle {
+  width: 3px;
+  height: 3px;
+  opacity: .72;
+  background: #c8dcff;
+  box-shadow: 0 0 9px 2px rgba(152, 189, 255, .55);
+  animation: cg-drift 9s ease-in-out infinite alternate;
+}
+.gallery-theme-celestial .gallery-atmosphere__particle--one { left: 16%; top: 23%; animation-delay: -2s; }
+.gallery-theme-celestial .gallery-atmosphere__particle--two { left: 78%; top: 22%; width: 2px; height: 2px; animation-delay: -5s; }
+.gallery-theme-celestial .gallery-atmosphere__particle--three { left: 85%; top: 72%; animation-delay: -7s; }
+.gallery-theme-celestial .gallery-atmosphere__particle--four { left: 26%; top: 78%; width: 2px; height: 2px; animation-delay: -4s; }
+.gallery-theme-celestial .gallery-atmosphere__particle--five { left: 64%; top: 11%; animation-delay: -1s; }
+.gallery-theme-celestial .gallery-atmosphere__particle--six { left: 7%; top: 56%; width: 2px; height: 2px; animation-delay: -6s; }
+
+.gallery-theme-celestial .viewer-grid {
+  border-color: rgba(180, 195, 244, .3);
+  border-radius: 7px;
+  background-color: rgba(10, 13, 31, .78);
+  background-image:
+    linear-gradient(rgba(174, 194, 255, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(174, 194, 255, .025) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 43%, rgba(71, 83, 144, .24), transparent 58%),
+    linear-gradient(145deg, rgba(27, 33, 67, .5), rgba(8, 11, 27, .93) 73%);
+  background-size: 54px 54px, 54px 54px, auto, auto;
+  box-shadow:
+    0 34px 110px rgba(0, 0, 0, .56),
+    0 0 0 1px rgba(211, 222, 255, .055),
+    inset 0 1px 0 rgba(230, 238, 255, .12),
+    inset 0 0 80px rgba(79, 96, 166, .11);
+  perspective: 1400px;
+}
+.gallery-theme-celestial .viewer-grid::before,
+.gallery-theme-celestial .viewer-grid::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  inset: 3.5%;
+  border: 1px solid rgba(189, 204, 255, .09);
+  border-radius: 4px;
+}
+.gallery-theme-celestial .gallery-stage-effects {
+  z-index: 1;
+}
+.gallery-theme-celestial .viewer-grid::before {
+  inset: 6% 8%;
+  border-color: rgba(185, 198, 245, .055);
+  transform: translateZ(-30px);
+  box-shadow: 0 0 45px rgba(133, 157, 255, .05), inset 0 0 40px rgba(155, 177, 255, .025);
+}
+.gallery-theme-celestial .viewer-grid::after {
+  inset: auto 12% 12%;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(200, 215, 255, .3), transparent);
+  filter: blur(.2px);
+}
+
+.gallery-theme-celestial .gallery-stage-effects {
+  perspective: 1050px;
+  transform-style: preserve-3d;
+}
+.gallery-theme-celestial .gallery-stage-effects__halo {
+  width: min(64%, 700px);
+  aspect-ratio: 1;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(112, 133, 215, .13), rgba(80, 94, 163, .065) 35%, transparent 69%),
+    conic-gradient(from 15deg, transparent 0deg, rgba(163, 183, 255, .14) 42deg, transparent 82deg, rgba(219, 188, 243, .09) 152deg, transparent 206deg, rgba(143, 187, 255, .12) 274deg, transparent 330deg);
+  border: 1px solid rgba(183, 202, 255, .14);
+  box-shadow: 0 0 62px rgba(125, 155, 255, .1), inset 0 0 45px rgba(173, 195, 255, .07);
+  transform: translate(-50%, -50%) rotateX(63deg) rotateZ(-12deg);
+  animation: cg-halo-breathe 11s ease-in-out infinite alternate;
+  -webkit-mask: radial-gradient(ellipse, transparent 35%, #000 35.5%, #000 36%, transparent 36.5%, transparent 49%, #000 49.5%, #000 50%, transparent 50.5%);
+  mask: radial-gradient(ellipse, transparent 35%, #000 35.5%, #000 36%, transparent 36.5%, transparent 49%, #000 49.5%, #000 50%, transparent 50.5%);
+}
+.gallery-theme-celestial .gallery-stage-effects__ring {
+  width: min(58%, 620px);
+  height: min(58%, 620px);
+  border: 1px solid rgba(189, 206, 255, .27);
+  box-shadow: 0 0 21px rgba(145, 174, 255, .12), inset 0 0 18px rgba(172, 190, 255, .06);
+  transform: translate(-50%, -50%) rotateX(68deg) rotateZ(20deg);
+}
+.gallery-theme-celestial .gallery-stage-effects__ring--one {
+  width: min(70%, 780px);
+  height: min(38%, 420px);
+  border-color: rgba(156, 185, 255, .3);
+  border-left-color: rgba(205, 220, 255, .6);
+  border-right-color: rgba(191, 165, 239, .4);
+  animation: cg-ring-turn 24s linear infinite;
+}
+.gallery-theme-celestial .gallery-stage-effects__ring--two {
+  width: min(48%, 520px);
+  height: min(69%, 700px);
+  border-color: rgba(212, 192, 255, .2);
+  border-top-color: rgba(202, 220, 255, .49);
+  transform: translate(-50%, -50%) rotateX(72deg) rotateZ(-38deg);
+  animation: cg-ring-turn-reverse 34s linear infinite;
+}
+.gallery-theme-celestial .gallery-stage-effects__floor {
+  width: 76%;
+  height: 35%;
+  bottom: -8%;
+  opacity: .82;
+  border-top: 1px solid rgba(171, 196, 255, .38);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(133, 162, 255, .25), rgba(103, 118, 206, .09) 27%, transparent 67%),
+    repeating-linear-gradient(90deg, transparent 0 53px, rgba(177, 199, 255, .08) 54px, transparent 55px);
+  filter: blur(.2px);
+  mask-image: linear-gradient(to bottom, #000, transparent 83%);
+}
+.gallery-theme-celestial .gallery-stage-effects__beam {
+  opacity: .8;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(146, 172, 255, .055) 49.8%, rgba(212, 224, 255, .14) 50%, rgba(146, 172, 255, .055) 50.2%, transparent 100%),
+    linear-gradient(180deg, rgba(138, 159, 255, .08), transparent 29%, transparent 70%, rgba(145, 175, 255, .06));
+  mix-blend-mode: screen;
+}
+
+.gallery-theme-celestial [data-testid="source-turntable"] {
+  z-index: 2;
+}
+.gallery-theme-celestial [data-testid="source-turntable"] > img {
+  filter: drop-shadow(0 28px 30px rgba(0, 0, 0, .72)) drop-shadow(0 0 22px rgba(213, 188, 122, .13));
+}
+.gallery-theme-celestial .artwork-thumb {
+  border-color: rgba(174, 188, 230, .27);
+  border-radius: 6px;
+  background: linear-gradient(145deg, rgba(37, 44, 78, .88), rgba(13, 17, 39, .94));
+  box-shadow: inset 0 1px 0 rgba(233, 239, 255, .12), 0 9px 24px rgba(0, 0, 0, .27);
+  backdrop-filter: blur(12px);
+}
+.gallery-theme-celestial .artwork-thumb[aria-pressed="true"] {
+  border-color: rgba(202, 216, 255, .83);
+  background: linear-gradient(145deg, rgba(68, 80, 133, .94), rgba(27, 34, 69, .98));
+  box-shadow: 0 0 0 1px rgba(186, 204, 255, .24), 0 0 26px rgba(122, 157, 255, .22), inset 0 1px 0 rgba(255,255,255,.24);
+}
+.gallery-theme-celestial .artwork-thumb:hover {
+  border-color: rgba(221, 218, 255, .72);
+}
+.gallery-theme-celestial button[aria-label="Reset source view"],
+.gallery-theme-celestial [data-testid="previous-artwork"],
+.gallery-theme-celestial [data-testid="zoom-out"],
+.gallery-theme-celestial [data-testid="zoom-in"],
+.gallery-theme-celestial [data-testid="next-artwork"] {
+  color: #e0e6ff;
+}
+.gallery-theme-celestial button[aria-label="Reset source view"],
+.gallery-theme-celestial .absolute.bottom-3.left-1\/2 > button,
+.gallery-theme-celestial .absolute.bottom-5.left-1\/2 > button {
+  background-color: rgba(20, 25, 51, .82);
+  border-color: rgba(181, 197, 244, .38);
+  box-shadow: inset 0 1px 0 rgba(237, 242, 255, .11), 0 8px 24px rgba(0, 0, 0, .3);
+  backdrop-filter: blur(16px);
+}
+.gallery-theme-celestial [data-testid="next-artwork"] {
+  background-color: rgba(112, 126, 188, .88);
+}
+.gallery-theme-celestial button:focus-visible {
+  outline-color: #c7d6ff;
+}
+
+@keyframes cg-nebula {
+  from { transform: translate3d(-2%, 1%, 0) scale(.97); }
+  to { transform: translate3d(3%, -2%, 0) scale(1.04); }
+}
+@keyframes cg-orbit-drift {
+  from { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(-17deg); }
+  to { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(343deg); }
+}
+@keyframes cg-orbit-drift-reverse {
+  from { transform: translate(-50%, -50%) rotateX(73deg) rotateZ(57deg); }
+  to { transform: translate(-50%, -50%) rotateX(73deg) rotateZ(-303deg); }
+}
+@keyframes cg-drift {
+  from { opacity: .35; transform: translate3d(0, 0, 0) scale(.75); }
+  to { opacity: .9; transform: translate3d(8px, -13px, 0) scale(1.2); }
+}
+@keyframes cg-halo-breathe {
+  from { opacity: .65; transform: translate(-50%, -50%) rotateX(63deg) rotateZ(-12deg) scale(.98); }
+  to { opacity: 1; transform: translate(-50%, -50%) rotateX(63deg) rotateZ(-8deg) scale(1.03); }
+}
+@keyframes cg-ring-turn {
+  from { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(20deg); }
+  to { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(380deg); }
+}
+@keyframes cg-ring-turn-reverse {
+  from { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(-38deg); }
+  to { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(-398deg); }
+}
+
+@media (max-width: 767px) {
+  .gallery-theme-celestial .viewer-grid {
+    background-size: 42px 42px, 42px 42px, auto, auto;
+  }
+  .gallery-theme-celestial .gallery-atmosphere__orbit {
+    width: 120vw;
+    height: 56vw;
+  }
+  .gallery-theme-celestial .gallery-atmosphere__orbit--two {
+    width: 88vw;
+    height: 85vw;
+  }
+  .gallery-theme-celestial .gallery-stage-effects__halo {
+    width: 86%;
+  }
+  .gallery-theme-celestial .gallery-stage-effects__ring--one {
+    width: 88%;
+    height: 45%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-theme-celestial .gallery-atmosphere__glow,
+  .gallery-theme-celestial .gallery-atmosphere__orbit,
+  .gallery-theme-celestial .gallery-atmosphere__particle,
+  .gallery-theme-celestial .gallery-stage-effects__halo,
+  .gallery-theme-celestial .gallery-stage-effects__ring {
+    animation: none !important;
+  }
+}

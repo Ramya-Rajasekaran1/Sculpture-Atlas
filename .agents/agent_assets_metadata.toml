@@ -1,0 +1,9 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "fLGh8YV-IWP6fISdi0Rwe"
+uri = "file://generated-artifacts/audio/thillana-instrumental.mp3"
+type = "audio"
+title = "original instrumental thillana gallery music"
+description = "Generated music: Original South Indian Carnatic instrumental thillana-inspired background music for a sacred sculpture gallery. Melodic Saraswati veena in a bright Khamas-inspired Carnatic raga with …"

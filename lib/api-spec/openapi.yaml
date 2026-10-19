@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+paths:
+  /audio/thillana.mp3:
+    get:
+      operationId: getThillanaAudio
+      tags: [audio]
+      summary: Stream the gallery's original instrumental background music
+      parameters:
+        - in: header
+          name: Range
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Complete MP3 audio
+          content:
+            audio/mpeg:
+              schema:
+                type: string
+                format: binary
+        "206":
+          description: Requested audio byte range
+          content:
+            audio/mpeg:
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Audio asset not found
+        "416":
+          description: Requested byte range is not satisfiable
+        "503":
+          description: Audio is temporarily unavailable
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+

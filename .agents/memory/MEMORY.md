@@ -1,0 +1,2 @@
+- [Turntable fidelity](turntable-fidelity.md) — keep footage user-controlled; avoid synthetic frame morphs that distort carvings.
+- [Visual direction](visual-direction.md) — calm, divine atmosphere on black, with sparse golden dust and performance-conscious effects.

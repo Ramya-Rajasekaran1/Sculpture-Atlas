@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Sculpture Atlas"
+description = "An interactive sculpture gallery using still imagery from the creator's uploaded sculpture videos, with mouse-, touch-, and keyboard-controlled 3D models."
+version = "1.0.0"
+id = "artifacts/sculpture-atlas"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18363
+
+[services.development]
+run = "pnpm --filter @workspace/sculpture-atlas run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sculpture-atlas", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/sculpture-atlas/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18363"
+BASE_PATH = "/"

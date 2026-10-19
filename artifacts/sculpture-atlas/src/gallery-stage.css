@@ -1,0 +1,283 @@
+.gallery-theme-obsidian {
+  --artifact-accent: 192, 148, 74;
+  --artifact-highlight: 226, 194, 132;
+  position: relative;
+  isolation: isolate;
+  color: #e5e5e3;
+  background: #000;
+}
+
+.gallery-title {
+  text-shadow: 0 0 18px rgba(var(--artifact-highlight), .26), 0 2px 12px rgba(0,0,0,.9);
+}
+.gallery-title::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 1px;
+  margin-top: 5px;
+  background: linear-gradient(90deg, rgba(var(--artifact-highlight), .82), transparent);
+  box-shadow: 0 0 8px rgba(var(--artifact-accent), .45);
+}
+
+.gallery-accent-gold {
+  --artifact-accent: 192, 148, 74;
+  --artifact-highlight: 226, 194, 132;
+}
+.gallery-accent-stone {
+  --artifact-accent: 158, 172, 187;
+  --artifact-highlight: 210, 220, 229;
+}
+.gallery-accent-chromatic {
+  --artifact-accent: 91, 167, 212;
+  --artifact-highlight: 189, 144, 219;
+}
+.gallery-accent-teal {
+  --artifact-accent: 57, 161, 132;
+  --artifact-highlight: 145, 221, 194;
+}
+
+.gallery-theme-obsidian::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .34;
+  background:
+    linear-gradient(90deg, transparent 0 5%, rgba(var(--artifact-highlight), .045) 5.15%, transparent 5.5% 94.3%, rgba(var(--artifact-highlight), .04) 94.5%, transparent 95%),
+    repeating-linear-gradient(0deg, transparent 0 118px, rgba(220, 225, 231, .018) 119px, transparent 121px),
+    radial-gradient(ellipse at 50% 50%, transparent 0 42%, rgba(0, 0, 0, .46) 83%);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.gallery-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1150px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.42), transparent 22% 78%, rgba(0,0,0,.46)),
+    radial-gradient(ellipse at 50% 44%, transparent 20%, rgba(0,0,0,.34) 72%);
+}
+
+.gallery-atmosphere__glow,
+.gallery-atmosphere__orbit,
+.gallery-atmosphere__floor,
+.gallery-stage-effects__halo,
+.gallery-stage-effects__ring,
+.gallery-stage-effects__floor,
+.gallery-stage-effects__beam {
+  position: absolute;
+  pointer-events: none;
+}
+.gallery-atmosphere__glow,
+.gallery-stage-effects__halo {
+  border-radius: 50%;
+}
+.gallery-atmosphere__orbit {
+  left: 50%;
+  top: 49%;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+.gallery-stage-effects { transform-style: preserve-3d; perspective: 1000px; }
+.gallery-stage-effects__halo,
+.gallery-stage-effects__ring {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gallery-atmosphere__glow--one {
+  width: 56vw;
+  height: 46vw;
+  left: 22%;
+  top: 1%;
+  background: radial-gradient(ellipse, rgba(var(--artifact-accent), .025), rgba(var(--artifact-accent), .01) 38%, transparent 71%);
+  filter: blur(58px);
+  animation: studio-breathe 12s ease-in-out infinite alternate;
+}
+.gallery-atmosphere__glow--two {
+  width: 44vw;
+  height: 30vw;
+  right: 1%;
+  bottom: -6%;
+  background: radial-gradient(ellipse, rgba(var(--artifact-accent), .015), transparent 70%);
+  filter: blur(48px);
+}
+.gallery-atmosphere__orbit {
+  width: min(74vw, 1050px);
+  height: min(42vw, 590px);
+  border: 1px solid rgba(var(--artifact-highlight), .055);
+  box-shadow: inset 0 0 34px rgba(var(--artifact-accent), .018), 0 0 28px rgba(0,0,0,.4);
+  transform: translate(-50%, -50%) rotateX(67deg) rotateZ(-8deg);
+}
+.gallery-atmosphere__orbit--two {
+  width: min(60vw, 830px);
+  height: min(31vw, 430px);
+  border-color: rgba(220, 225, 231, .035);
+  transform: translate(-50%, -50%) rotateX(68deg) rotateZ(11deg);
+}
+.gallery-atmosphere__floor {
+  left: 50%;
+  bottom: -35%;
+  width: 130%;
+  height: 73%;
+  opacity: .7;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 105px, rgba(220, 225, 231, .028) 106px, transparent 108px),
+    repeating-linear-gradient(0deg, transparent 0 48px, rgba(220, 225, 231, .025) 49px, transparent 51px),
+    radial-gradient(ellipse at 50% 12%, rgba(var(--artifact-accent), .075), rgba(10, 11, 12, .72) 57%, #050607 83%);
+  border-top: 1px solid rgba(var(--artifact-highlight), .08);
+  box-shadow: 0 -20px 60px rgba(0,0,0,.34);
+  transform: translateX(-50%) perspective(700px) rotateX(68deg);
+  transform-origin: center top;
+}
+.viewer-grid {
+  isolation: isolate;
+  border-color: rgba(205, 211, 218, .19);
+  background-color: #000;
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,.46), transparent 18% 82%, rgba(0,0,0,.48)),
+    radial-gradient(ellipse at 50% 48%, rgba(var(--artifact-accent), .012), transparent 54%),
+    repeating-linear-gradient(0deg, transparent 0 75px, rgba(220, 225, 231, .01) 76px, transparent 78px);
+  box-shadow: 0 30px 90px rgba(0,0,0,.68), inset 0 1px rgba(240,244,247,.055), inset 0 0 90px rgba(0,0,0,.62);
+}
+.viewer-grid::before,
+.viewer-grid::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+.viewer-grid::before {
+  inset: 14px;
+  border: 1px solid rgba(219, 225, 231, .075);
+  box-shadow: inset 0 0 24px rgba(0,0,0,.28);
+}
+.viewer-grid::after {
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(var(--artifact-highlight), .07), transparent 1px) left / 1px 100% no-repeat,
+    linear-gradient(180deg, rgba(var(--artifact-highlight), .045), transparent 1px) top / 100% 1px no-repeat,
+    radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0,0,0,.28) 100%);
+}
+
+.gallery-stage-effects__halo {
+  width: min(51vw, 690px);
+  height: min(51vw, 690px);
+  background: radial-gradient(circle, rgba(var(--artifact-accent), .025) 0%, rgba(var(--artifact-accent), .01) 34%, transparent 70%);
+  filter: blur(8px);
+  animation: studio-halo 12s ease-in-out infinite alternate;
+}
+.gallery-stage-effects__ring {
+  width: min(46vw, 600px);
+  height: min(24vw, 315px);
+  border: 1px solid rgba(var(--artifact-highlight), .12);
+  box-shadow: 0 0 24px rgba(var(--artifact-accent), .035), inset 0 0 20px rgba(var(--artifact-accent), .018);
+  transform: translate(-50%, -50%) rotateX(72deg) rotateZ(-5deg);
+}
+.gallery-stage-effects__ring--two {
+  width: min(55vw, 710px);
+  height: min(31vw, 400px);
+  border-color: rgba(220, 225, 231, .045);
+  transform: translate(-50%, -50%) rotateX(72deg) rotateZ(8deg);
+}
+.gallery-stage-effects__floor {
+  left: 50%;
+  width: 112%;
+  height: 44%;
+  bottom: -10%;
+  border-top: 1px solid rgba(var(--artifact-highlight), .095);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 74px, rgba(220, 225, 231, .032) 75px, transparent 77px),
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(220, 225, 231, .027) 35px, transparent 37px),
+    radial-gradient(ellipse at 50% 0%, rgba(var(--artifact-accent), .07), rgba(15, 16, 17, .72) 55%, transparent 78%);
+  transform: translateX(-50%) perspective(560px) rotateX(69deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+.gallery-stage-effects__beam {
+  inset: 0;
+  opacity: .25;
+  background:
+    linear-gradient(105deg, transparent 19%, rgba(var(--artifact-accent), .018) 43%, rgba(var(--artifact-highlight), .035) 49%, rgba(var(--artifact-accent), .018) 56%, transparent 78%),
+    radial-gradient(ellipse at 50% 0%, rgba(var(--artifact-accent), .035), transparent 55%);
+  mix-blend-mode: screen;
+}
+.gallery-theme-obsidian [data-testid="source-frame"] {
+  filter: drop-shadow(0 24px 20px rgba(0,0,0,.86)) drop-shadow(0 0 10px rgba(var(--artifact-accent), .07));
+}
+.gallery-theme-obsidian [data-material="black-steel"] {
+  filter: url("#black-steel-material") drop-shadow(0 20px 18px rgba(0,0,0,.85));
+}
+.gallery-theme-obsidian .viewer-grid {
+  border-color: rgba(var(--artifact-highlight), .54);
+  box-shadow: 0 22px 65px rgba(58,52,40,.2), 0 0 16px rgba(var(--artifact-accent), .1);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+.gallery-theme-obsidian .artwork-thumb {
+  border-color: color-mix(in srgb, var(--thumbnail-accent) 54%, transparent);
+  background: linear-gradient(145deg, rgba(36, 39, 41, .94), rgba(11, 12, 13, .98));
+  box-shadow: 0 8px 20px rgba(0,0,0,.36), inset 0 1px rgba(255,255,255,.045);
+  transition: border-color 260ms ease, background 260ms ease, box-shadow 260ms ease, opacity 250ms ease;
+}
+.gallery-theme-obsidian .artwork-thumb:hover {
+  border-color: var(--thumbnail-accent);
+}
+.gallery-theme-obsidian .artwork-thumb:focus-visible {
+  outline-color: var(--thumbnail-accent);
+}
+.gallery-theme-obsidian .artwork-thumb[aria-pressed="true"] {
+  border-color: var(--thumbnail-accent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--thumbnail-accent) 22%, #111213), #111213);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--thumbnail-accent) 24%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--thumbnail-accent) 28%, transparent);
+}
+.gallery-theme-obsidian .artwork-thumb[aria-pressed="true"] > span {
+  --tw-ring-color: var(--thumbnail-accent);
+}
+
+/* Blend authentic source frames when the visitor changes artworks. */
+.artwork-transition-in {
+  animation: artwork-dissolve-in 460ms cubic-bezier(.22,.7,.25,1) both;
+}
+.artwork-transition-out {
+  animation: artwork-dissolve-out 460ms cubic-bezier(.22,.7,.25,1) both;
+}
+@keyframes artwork-dissolve-in {
+  from { opacity: 0; transform: scale(.975); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes artwork-dissolve-out {
+  from { opacity: 1; transform: var(--outgoing-frame-transform, scale(1)); }
+  to { opacity: 0; transform: scale(.985); }
+}
+
+@keyframes studio-breathe {
+  from { opacity: .55; transform: translate(-1%, 0) scale(.98); }
+  to { opacity: .85; transform: translate(1%, -1%) scale(1.03); }
+}
+@keyframes studio-halo {
+  from { opacity: .6; transform: translate(-50%, -50%) scale(.97); }
+  to { opacity: .86; transform: translate(-50%, -50%) scale(1.03); }
+}
+
+@media (max-width: 767px) {
+  .gallery-atmosphere__orbit { width: 118vw; height: 66vw; }
+  .gallery-atmosphere__orbit--two { width: 94vw; height: 54vw; }
+  .gallery-stage-effects__ring { width: 78vw; height: 42vw; }
+  .gallery-stage-effects__ring--two { width: 92vw; height: 54vw; }
+  .viewer-grid::before { inset: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-atmosphere__glow,
+  .gallery-stage-effects__halo {
+    animation: none !important;
+  }
+  .artwork-transition-in,
+  .artwork-transition-out { animation-duration: 1ms; }
+}

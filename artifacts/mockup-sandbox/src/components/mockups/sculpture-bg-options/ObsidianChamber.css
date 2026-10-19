@@ -1,0 +1,200 @@
+/* Obsidian Chamber — a relic held in a carved, light-eating stone vault. */
+.gallery-theme-obsidian {
+  --obsidian-ink: #090a09;
+  --obsidian-wall: #171613;
+  --obsidian-brass: #c5a56a;
+  --obsidian-amber: #e9bd70;
+  position: relative;
+  isolation: isolate;
+  color: #e5dcc5;
+  background:
+    radial-gradient(ellipse at 49% 43%, rgba(93, 69, 38, .2), transparent 36%),
+    radial-gradient(ellipse at 50% 100%, rgba(127, 86, 38, .11), transparent 45%),
+    linear-gradient(115deg, #080908 0%, #171613 38%, #0d0e0c 72%, #060707 100%);
+}
+
+.gallery-theme-obsidian::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+  background:
+    linear-gradient(90deg, transparent 0 5%, rgba(196, 159, 91, .09) 5.15%, transparent 5.5% 94.3%, rgba(216, 171, 91, .08) 94.5%, transparent 95%),
+    repeating-linear-gradient(0deg, transparent 0 104px, rgba(206, 182, 139, .025) 105px, transparent 107px),
+    radial-gradient(ellipse at 50% 50%, transparent 0 42%, rgba(0, 0, 0, .34) 83%);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.gallery-theme-obsidian .gallery-atmosphere {
+  perspective: 1150px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.48), transparent 22% 78%, rgba(0,0,0,.52)),
+    radial-gradient(ellipse at 50% 44%, transparent 20%, rgba(0,0,0,.26) 72%);
+}
+
+.gallery-theme-obsidian .gallery-atmosphere__glow--one {
+  width: 56vw;
+  height: 46vw;
+  left: 22%;
+  top: 1%;
+  background: radial-gradient(ellipse, rgba(188, 127, 48, .2), rgba(102, 67, 29, .07) 36%, transparent 69%);
+  filter: blur(48px);
+  animation: obsidian-breath 11s ease-in-out infinite alternate;
+}
+
+.gallery-theme-obsidian .gallery-atmosphere__glow--two {
+  width: 44vw;
+  height: 30vw;
+  right: 1%;
+  bottom: -6%;
+  background: radial-gradient(ellipse, rgba(126, 92, 48, .16), transparent 67%);
+  filter: blur(38px);
+}
+
+.gallery-theme-obsidian .gallery-atmosphere__orbit {
+  left: 50%;
+  top: 49%;
+  width: min(74vw, 1050px);
+  height: min(42vw, 590px);
+  border: 1px solid rgba(203, 167, 104, .1);
+  box-shadow: inset 0 0 34px rgba(176, 126, 54, .035), 0 0 28px rgba(0,0,0,.38);
+  transform: translate(-50%, -50%) rotateX(67deg) rotateZ(-8deg);
+}
+.gallery-theme-obsidian .gallery-atmosphere__orbit--two {
+  width: min(60vw, 830px);
+  height: min(31vw, 430px);
+  border-color: rgba(223, 193, 135, .065);
+  transform: translate(-50%, -50%) rotateX(68deg) rotateZ(11deg);
+}
+
+.gallery-theme-obsidian .gallery-atmosphere__floor {
+  width: 130%;
+  height: 73%;
+  bottom: -35%;
+  opacity: .88;
+  background:
+    linear-gradient(90deg, transparent 0 8%, rgba(205, 170, 105, .12) 8.1%, transparent 8.35% 91.7%, rgba(205, 170, 105, .1) 91.9%, transparent 92%),
+    repeating-linear-gradient(90deg, transparent 0 105px, rgba(205, 180, 130, .055) 106px, transparent 108px),
+    repeating-linear-gradient(0deg, transparent 0 48px, rgba(205, 180, 130, .055) 49px, transparent 51px),
+    radial-gradient(ellipse at 50% 12%, rgba(177, 125, 56, .22), rgba(20, 18, 14, .72) 57%, #080908 83%);
+  border-top: 1px solid rgba(196, 153, 84, .18);
+  box-shadow: 0 -20px 60px rgba(0,0,0,.28);
+}
+
+.gallery-theme-obsidian .gallery-atmosphere__particle {
+  background: #d9b875;
+  box-shadow: 0 0 6px 1px rgba(227, 184, 103, .5);
+  opacity: .56;
+  animation: obsidian-drift 12s ease-in-out infinite alternate;
+}
+.gallery-theme-obsidian .gallery-atmosphere__particle--one { left: 20%; top: 26%; width: 2px; height: 2px; animation-delay: -2s; }
+.gallery-theme-obsidian .gallery-atmosphere__particle--two { left: 37%; top: 70%; width: 3px; height: 3px; animation-delay: -8s; }
+.gallery-theme-obsidian .gallery-atmosphere__particle--three { left: 74%; top: 30%; width: 2px; height: 2px; animation-delay: -5s; }
+.gallery-theme-obsidian .gallery-atmosphere__particle--four { left: 82%; top: 64%; width: 2px; height: 2px; animation-delay: -10s; }
+.gallery-theme-obsidian .gallery-atmosphere__particle--five { left: 13%; top: 55%; width: 1px; height: 1px; animation-delay: -3s; }
+.gallery-theme-obsidian .gallery-atmosphere__particle--six { left: 63%; top: 79%; width: 2px; height: 2px; animation-delay: -7s; }
+
+.gallery-theme-obsidian .viewer-grid {
+  isolation: isolate;
+  border-color: rgba(175, 145, 91, .34);
+  background-color: #11110f;
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,.4), transparent 18% 82%, rgba(0,0,0,.42)),
+    radial-gradient(ellipse at 50% 48%, rgba(151, 105, 49, .09), transparent 54%),
+    repeating-linear-gradient(0deg, transparent 0 75px, rgba(200, 171, 119, .025) 76px, transparent 78px);
+  box-shadow: 0 30px 90px rgba(0,0,0,.68), inset 0 1px rgba(238, 206, 142, .13), inset 0 0 90px rgba(0,0,0,.58);
+}
+
+.gallery-theme-obsidian .viewer-grid::before,
+.gallery-theme-obsidian .viewer-grid::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+.gallery-theme-obsidian .viewer-grid::before {
+  inset: 14px;
+  border: 1px solid rgba(203, 166, 101, .12);
+  box-shadow: inset 0 0 24px rgba(0,0,0,.22);
+}
+.gallery-theme-obsidian .viewer-grid::after {
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(228, 180, 95, .13), transparent 1px) left / 1px 100% no-repeat,
+    linear-gradient(180deg, rgba(228, 180, 95, .09), transparent 1px) top / 100% 1px no-repeat,
+    radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0,0,0,.18) 100%);
+}
+
+.gallery-theme-obsidian .gallery-stage-effects__halo {
+  width: min(51vw, 690px);
+  height: min(51vw, 690px);
+  background: radial-gradient(circle, rgba(209, 160, 79, .14) 0%, rgba(162, 111, 49, .075) 28%, rgba(91, 64, 31, .035) 49%, transparent 70%);
+  filter: blur(5px);
+  animation: obsidian-breath 9s ease-in-out infinite alternate;
+}
+.gallery-theme-obsidian .gallery-stage-effects__ring {
+  width: min(46vw, 600px);
+  height: min(24vw, 315px);
+  border: 1px solid rgba(218, 177, 104, .28);
+  box-shadow: 0 0 24px rgba(198, 142, 60, .09), inset 0 0 20px rgba(202, 160, 89, .045);
+  transform: translate(-50%, -50%) rotateX(72deg) rotateZ(-5deg);
+}
+.gallery-theme-obsidian .gallery-stage-effects__ring--two {
+  width: min(55vw, 710px);
+  height: min(31vw, 400px);
+  border-color: rgba(201, 166, 108, .14);
+  transform: translate(-50%, -50%) rotateX(72deg) rotateZ(8deg);
+}
+.gallery-theme-obsidian .gallery-stage-effects__floor {
+  width: 112%;
+  height: 44%;
+  bottom: -10%;
+  border-top: 1px solid rgba(212, 168, 92, .25);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 74px, rgba(213, 173, 105, .065) 75px, transparent 77px),
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(213, 173, 105, .055) 35px, transparent 37px),
+    radial-gradient(ellipse at 50% 0%, rgba(174, 119, 51, .22), rgba(31, 26, 19, .7) 55%, transparent 78%);
+  transform: translateX(-50%) perspective(560px) rotateX(69deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+.gallery-theme-obsidian .gallery-stage-effects__beam {
+  background:
+    linear-gradient(105deg, transparent 19%, rgba(219, 173, 93, .04) 37%, rgba(228, 188, 113, .1) 49%, rgba(219, 173, 93, .025) 60%, transparent 78%),
+    radial-gradient(ellipse at 50% 0%, rgba(234, 195, 122, .09), transparent 55%);
+  mix-blend-mode: screen;
+}
+
+.gallery-theme-obsidian [data-testid="source-frame"] {
+  filter: drop-shadow(0 22px 16px rgba(0,0,0,.8)) drop-shadow(0 0 14px rgba(212,158,72,.16));
+}
+.gallery-theme-obsidian .artwork-thumb {
+  border-color: rgba(187, 161, 111, .3);
+  background: linear-gradient(145deg, rgba(63, 54, 40, .9), rgba(17, 17, 15, .94));
+  box-shadow: 0 8px 20px rgba(0,0,0,.32), inset 0 1px rgba(255, 230, 177, .08);
+}
+.gallery-theme-obsidian .artwork-thumb[aria-pressed="true"] {
+  border-color: #d4b16e;
+  background: linear-gradient(145deg, #51432c, #211d16);
+  box-shadow: 0 0 22px rgba(210, 165, 83, .22), inset 0 0 0 1px rgba(240, 206, 133, .34);
+}
+.gallery-theme-obsidian .artwork-thumb img { filter: drop-shadow(0 3px 5px rgba(0,0,0,.5)); }
+
+@keyframes obsidian-breath {
+  from { opacity: .66; transform: translate(-1%, 0) scale(.97); }
+  to { opacity: 1; transform: translate(1%, -1%) scale(1.04); }
+}
+@keyframes obsidian-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(8px, -16px, 0); }
+}
+
+@media (max-width: 767px) {
+  .gallery-theme-obsidian .gallery-atmosphere__orbit { width: 118vw; height: 66vw; }
+  .gallery-theme-obsidian .gallery-atmosphere__orbit--two { width: 94vw; height: 54vw; }
+  .gallery-theme-obsidian .gallery-stage-effects__ring { width: 78vw; height: 42vw; }
+  .gallery-theme-obsidian .gallery-stage-effects__ring--two { width: 92vw; height: 54vw; }
+  .gallery-theme-obsidian .viewer-grid::before { inset: 8px; }
+}
