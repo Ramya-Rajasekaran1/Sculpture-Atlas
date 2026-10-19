@@ -28,12 +28,15 @@ type Artwork = {
   materialStyle?: 'black-steel';
 };
 
+const publicAssetUrl = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 const artworks: Artwork[] = [
   {
     id: '01',
     title: 'The Gilded Witness',
     subtitle: 'Temple figure · original footage',
-    image: '/artworks-transparent/golden-statue/frame-12.webp',
+    image: publicAssetUrl('/artworks-transparent/golden-statue/frame-12.webp'),
     material: 'Gilded stone appearance',
     clipInfo: '8 sec · MP4',
     note: 'The richly detailed gold-toned figure from your clip. Drag across the viewer to move through the camera’s original orbit and see its front, edges, and reverse.',
@@ -47,7 +50,7 @@ const artworks: Artwork[] = [
     id: '02',
     title: 'Water Keeper',
     subtitle: 'Carved stone sculpture · original footage',
-    image: '/artworks-transparent/carved-relief/frame-12.webp',
+    image: publicAssetUrl('/artworks-transparent/carved-relief/frame-12.webp'),
     material: 'Pale carved stone',
     clipInfo: '8 sec · MP4',
     note: 'The carved stone panel from your clip. Move through the source views to follow the figure around to the quieter, weathered reverse.',
@@ -61,7 +64,7 @@ const artworks: Artwork[] = [
     id: '03',
     title: 'Threshold Guardian',
     subtitle: 'Temple relief · black steel finish',
-    image: '/artworks-transparent/stone-guardian/frame-12.webp',
+    image: publicAssetUrl('/artworks-transparent/stone-guardian/frame-12.webp'),
     material: 'Blackened steel finish',
     clipInfo: '8 sec · MP4',
     note: 'The stone temple relief shown in your sculpture clip. Drag left or right to inspect the changing sides and carved front.',
@@ -76,7 +79,7 @@ const artworks: Artwork[] = [
     id: '04',
     title: 'Chromatic Deity',
     subtitle: 'Temple figure · original footage',
-    image: '/artworks-transparent/neon-figure/frame-12.webp',
+    image: publicAssetUrl('/artworks-transparent/neon-figure/frame-12.webp'),
     material: 'Pink and cyan scan',
     clipInfo: '8 sec · MP4',
     note: 'The pink-and-cyan temple figure from the source clip. Scrub through its original camera movement to see the relief from different angles.',
@@ -90,7 +93,7 @@ const artworks: Artwork[] = [
     id: '05',
     title: 'Echo / 05',
     subtitle: 'Luminous scan · screen recording',
-    image: '/artworks/digital-scan-retouched/frame-11.jpg',
+    image: publicAssetUrl('/artworks/digital-scan-retouched/frame-11.jpg'),
     material: 'Green structured-light scan',
     clipInfo: '23 sec · MOV',
     note: 'The luminous green scan in your screen recording. Scrub through the original capture from its wide view into the close-up details.',

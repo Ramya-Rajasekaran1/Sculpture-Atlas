@@ -19,7 +19,7 @@ type DragState = {
 function framePath(work: SourceArtwork, index: number) {
   const folder = work.transparentBackground ? 'artworks-transparent' : 'artworks';
   const extension = work.transparentBackground ? 'webp' : 'jpg';
-  return `/${folder}/${work.sequence}/frame-${String(index).padStart(2, '0')}.${extension}`;
+  return `${import.meta.env.BASE_URL}${folder}/${work.sequence}/frame-${String(index).padStart(2, '0')}.${extension}`;
 }
 
 function wrapFrame(position: number, count: number) {
